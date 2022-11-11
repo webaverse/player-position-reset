@@ -4,17 +4,17 @@ This app helps you reset the position of the player once the player is outside a
 ## Usage
 You can add this app in the .scn file
 
-- `start` object is the start of the range
+- `start` component is the start of the range
 
-    Default start object : `{ "x": -Infinity, "y": -Infinity, "z": -Infinity }`
+    Default start component : `{ "x": -Infinity, "y": -Infinity, "z": -Infinity }`
 
-- `end` object is the end of the range
+- `end` component is the end of the range
 
-    Default end object : `{ "x": Infinity, "y": Infinity, "z": Infinity }`
+    Default end component : `{ "x": Infinity, "y": Infinity, "z": Infinity }`
 
-- `reset` object is where the player will be reset to
+- `reset` component is where the player will be reset to
 
-    Default reset object : `{ "x": 0, "y": 0, "z": 0 }`
+    Default reset component : `{ "x": 0, "y": 0, "z": 0 }`
 
 ## Example :
 ```
