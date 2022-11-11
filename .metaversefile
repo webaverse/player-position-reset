@@ -1,0 +1,5 @@
+{
+  "name": "player-position-reset",
+  "description": "reset the position of the player if it goes outside of a certain range",
+  "start_url": "index.js"
+}
