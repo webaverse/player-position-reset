@@ -3,11 +3,6 @@ import * as THREE from "three";
 
 const {useApp, useFrame, useCleanup, useLocalPlayer} = metaversefile;
 
-const fadeDuration = 1000;
-const startVector = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
-const endVector = new THREE.Vector3(Infinity, Infinity, Infinity);
-const resetVector = new THREE.Vector3(0, 0, 0);
-
 const _isInRange = (vector, start, end) => {
   return (
     vector.x >= start.x &&
@@ -19,7 +14,14 @@ const _isInRange = (vector, start, end) => {
   );
 };
 
+// constants
+const FADE_DURATION = 5000;
+
+// reset state
 let isResetting = false;
+const startVector = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
+const endVector = new THREE.Vector3(Infinity, Infinity, Infinity);
+const resetVector = new THREE.Vector3(0, 0, 0);
 
 export default e => {
   const app = useApp();
@@ -59,7 +61,7 @@ export default e => {
   };
 
   const _setFadeoutAnimationStyle = div => {
-    div.style.transition = `opacity ${fadeDuration}ms ease-out`;
+    div.style.transition = `opacity ${FADE_DURATION}ms ease-out`;
   };
   const _fadeOut = div => {
     div.style.opacity = "0";
@@ -88,8 +90,8 @@ export default e => {
         setTimeout(() => {
           isResetting = false;
           document.body.removeChild(div);
-        }, fadeDuration);
-      }, fadeDuration);
+        }, FADE_DURATION);
+      }, FADE_DURATION);
     }
   };
 
