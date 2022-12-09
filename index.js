@@ -40,11 +40,39 @@ export default (e) => {
   _setVectorByComponent(endVector, 'end');
   _setVectorByComponent(resetVector, 'reset');
 
+  const _resetPlayerPosition = () => {
+    // Create a full screen white opaque overlay div over the entire screen, with opacity 0
+    const div = document.createElement('div');
+    div.style.position = 'absolute';
+    div.style.left = '0px';
+    div.style.top = '0px';
+    div.style.width = '100%';
+    div.style.height = '100%';
+    div.style.backgroundColor = 'white';
+    div.style.opacity = '0';
+    document.body.appendChild(div);
+
+    // then fade up to 1 over 1 second
+    div.style.transition = 'opacity 1s';
+    div.style.opacity = '1';
+
+    // on transition end, call setPosition on the player with player.characterPhysics.setPosition(resetVector);
+
+    setTimeout(() => {
+      player.characterPhysics.setPosition(resetVector);
+        // then fade back down to 0 over 1 second, then remove the div
+        div.style.transition = 'opacity 1s';
+        div.style.opacity = '0';
+        setTimeout(() => {
+          document.body.removeChild(div);
+        }, 1000);
+    }, 1000);
+  };
   useFrame(() => {
     const playerPosition = player.position;
     const inRange = _isInRange(playerPosition, startVector, endVector);
     if (!inRange) {
-      player.characterPhysics.setPosition(resetVector);
+      _resetPlayerPosition();
     }
   });
 
