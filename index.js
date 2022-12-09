@@ -15,7 +15,7 @@ const _isInRange = (vector, start, end) => {
 };
 
 // constants
-const FADE_DURATION = 5000;
+const FADE_DURATION = 1000;
 
 // reset state
 let isResetting = false;
